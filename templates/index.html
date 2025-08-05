@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicação Desktop - Versão Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aplicação Desktop</h1>
+        <p>Bem-vindo à sua aplicação desktop!</p>
+        <button id="btn-gato">Mostrar Gato Aleatório</button>
+        <div id="imagem-gato"></div>
+    </div>
+    <script>
+    document.getElementById('btn-gato').onclick = async function() {
+        const res = await fetch('http://127.0.0.1:5000/gato');
+        const data = await res.json();
+        document.getElementById('imagem-gato').innerHTML = `<img src="${data.url}" alt="Gato" />`;
+    }
+</script>
+</body>
+</html>
